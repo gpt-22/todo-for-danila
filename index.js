@@ -1,8 +1,8 @@
 const appElement = document.getElementById('app')
-let formElement = null
-let todoContainerElement = null
 
 // Начальное состояние
+let formElement = null
+let todoContainerElement = null
 let todos = [
   {
     id: Date.now(),
@@ -17,9 +17,8 @@ function getAddTodoFormElement(text) {
     <input type="text" name="todo-text" placeholder="текст епта" value="">
     <button type="submit">добавить</button>
   `
-  form.addEventListener('submit', (event) => {
-    event.preventDefault() // По деволту при событии submit браузер обновляет страницу - убираем это поведение
-  })
+  // По деволту при событии submit браузер обновляет страницу - убираем это поведение
+  form.addEventListener('submit', (event) => event.preventDefault())
 
   const button = form.querySelector('button')
   button.addEventListener('click', addTodo)
@@ -40,9 +39,7 @@ function getTodoElement(todo) {
   todoElement.className = 'todo-item'
   todoElement.innerHTML = `
     <span class="todo-text">${todo.text}</span>
-    <button>удалить</button>
   `
-  todoElement.querySelector('button').addEventListener('click', () => removeTodo(todo.id))
 
   return todoElement
 }
@@ -78,7 +75,6 @@ function addTodo() {
   })
   renderTodos(todoContainerElement)
 
-
   // чистим форму после отправки и сетим фокус обратно
   const inputElement = formElement.querySelector('input[name="todo-text"]')
   inputElement.value = ''
@@ -86,8 +82,11 @@ function addTodo() {
 }
 
 function removeTodo(id) {
-  todos = todos.filter(todo => todo.id !== id)
-  renderTodos(todoContainerElement)
+  // TODO: сделать самому
+}
+
+function editTodo(id) {
+  // TODO: сделать самому
 }
 
 // Точка старта приложения
